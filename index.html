@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lumière Events — Moments Made Eternal</title>
+  <link rel="stylesheet" href="styles.css" />
+  <!-- Google Fonts: Cormorant Garamond (display) + DM Sans (body) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- ========== NAVIGATION ========== -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <!-- Logo -->
+      <a href="#home" class="nav-logo">
+        <span class="logo-icon">✦</span>
+        <span class="logo-text">Lumière</span>
+      </a>
+
+      <!-- Desktop Links -->
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#home"     class="nav-link">Home</a></li>
+        <li><a href="#services" class="nav-link">Services</a></li>
+        <li><a href="#about"    class="nav-link">About</a></li>
+        <li><a href="#gallery"  class="nav-link">Gallery</a></li>
+        <li><a href="#contact"  class="nav-link">Contact</a></li>
+      </ul>
+
+      <!-- Mobile Hamburger -->
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </button>
+    </div>
+
+    <!-- Mobile Drawer -->
+    <div class="mobile-menu" id="mobileMenu">
+      <ul class="mobile-links">
+        <li><a href="#home"     class="mobile-link">Home</a></li>
+        <li><a href="#services" class="mobile-link">Services</a></li>
+        <li><a href="#about"    class="mobile-link">About</a></li>
+        <li><a href="#gallery"  class="mobile-link">Gallery</a></li>
+        <li><a href="#contact"  class="mobile-link">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ========== HERO ========== -->
+  <section class="hero" id="home">
+    <!-- Layered background: gradient mesh + decorative lines -->
+    <div class="hero-bg"></div>
+    <div class="hero-overlay"></div>
+
+    <!-- Decorative corner ornament -->
+    <div class="hero-ornament top-left">✦</div>
+    <div class="hero-ornament top-right">✦</div>
+    <div class="hero-ornament bottom-left">✦</div>
+    <div class="hero-ornament bottom-right">✦</div>
+
+    <div class="hero-content">
+      <p class="hero-eyebrow">Est. 2020 · Premium Event Curation</p>
+      <h1 class="hero-title">
+        Moments<br/>
+        <em>Made Eternal</em>
+      </h1>
+      <p class="hero-subtitle">
+        We transform your vision into unforgettable experiences — from intimate
+        gatherings to grand celebrations crafted with impeccable taste.
+      </p>
+      <div class="hero-cta-group">
+        <a href="#services" class="btn btn-primary">Explore Our Services</a>
+        <a href="#gallery"  class="btn btn-ghost">View Gallery</a>
+      </div>
+    </div>
+
+    <!-- Scroll indicator -->
+    <div class="scroll-indicator">
+      <span class="scroll-line"></span>
+      <span class="scroll-text">Scroll</span>
+    </div>
+  </section>
+
+  <!-- ========== SERVICES ========== -->
+  <section class="services" id="services">
+    <div class="section-container">
+      <div class="section-header">
+        <p class="section-eyebrow">What We Offer</p>
+        <h2 class="section-title">Our Signature Services</h2>
+        <p class="section-desc">
+          Each event is a canvas. We bring artistry, precision, and passion to
+          every detail — no matter the occasion.
+        </p>
+      </div>
+
+      <div class="services-grid">
+
+        <!-- Weddings -->
+        <div class="service-card" data-delay="0">
+          <div class="service-img-wrap">
+            <img
+              class="service-img"
+              src="https://images.unsplash.com/photo-1519741497674-611481863552?w=600&q=80&fit=crop&crop=center"
+              alt="Elegant wedding ceremony"
+              loading="lazy"
+            />
+            <div class="service-img-overlay"></div>
+          </div>
+          <div class="service-body">
+            <span class="service-icon">💍</span>
+            <h3 class="service-name">Weddings</h3>
+            <p class="service-desc">
+              From intimate ceremonies to grand ballroom affairs, we orchestrate
+              every detail of your perfect day with grace and elegance.
+            </p>
+            <a href="#contact" class="service-link">Enquire →</a>
+          </div>
+        </div>
+
+        <!-- Corporate -->
+        <div class="service-card" data-delay="100">
+          <div class="service-img-wrap">
+            <img
+              class="service-img"
+              src="https://images.unsplash.com/photo-1587825140708-dfaf72ae4b04?w=600&q=80&fit=crop&crop=center"
+              alt="Corporate event with elegant setup"
+              loading="lazy"
+            />
+            <div class="service-img-overlay"></div>
+          </div>
+          <div class="service-body">
+            <span class="service-icon">🏛️</span>
+            <h3 class="service-name">Corporate Events</h3>
+            <p class="service-desc">
+              Conferences, product launches, and galas — we elevate your brand
+              narrative through meticulously produced experiences.
+            </p>
+            <a href="#contact" class="service-link">Enquire →</a>
+          </div>
+        </div>
+
+        <!-- Birthdays -->
+        <div class="service-card" data-delay="200">
+          <div class="service-img-wrap">
+            <img
+              class="service-img"
+              src="https://images.unsplash.com/photo-1464349095431-e9a21285b5f3?w=600&q=80&fit=crop&crop=center"
+              alt="Luxury birthday party celebration"
+              loading="lazy"
+            />
+            <div class="service-img-overlay"></div>
+          </div>
+          <div class="service-body">
+            <span class="service-icon">🎂</span>
+            <h3 class="service-name">Birthdays</h3>
+            <p class="service-desc">
+              Milestone birthdays deserve legendary celebrations. We curate
+              bespoke parties that tell your unique story.
+            </p>
+            <a href="#contact" class="service-link">Enquire →</a>
+          </div>
+        </div>
+
+        <!-- Parties -->
+        <div class="service-card" data-delay="300">
+          <div class="service-img-wrap">
+            <img
+              class="service-img"
+              src="https://images.unsplash.com/photo-1530103862676-de8c9debad1d?w=600&q=80&fit=crop&crop=center"
+              alt="Private party with champagne and elegant decor"
+              loading="lazy"
+            />
+            <div class="service-img-overlay"></div>
+          </div>
+          <div class="service-body">
+            <span class="service-icon">🥂</span>
+            <h3 class="service-name">Private Parties</h3>
+            <p class="service-desc">
+              Cocktail evenings, themed soirées, holiday gatherings — we handle
+              every element so you can simply enjoy the moment.
+            </p>
+            <a href="#contact" class="service-link">Enquire →</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== ABOUT ========== -->
+  <section class="about" id="about">
+    <div class="section-container about-inner">
+
+      <!-- Left: image collage -->
+      <div class="about-visuals">
+        <img
+          class="about-img about-img--main"
+          src="https://images.unsplash.com/photo-1519741497674-611481863552?w=800&q=80&fit=crop&crop=center"
+          alt="Elegant wedding event by Lumière"
+          loading="lazy"
+        />
+        <img
+          class="about-img about-img--accent"
+          src="https://images.unsplash.com/photo-1587825140708-dfaf72ae4b04?w=600&q=80&fit=crop&crop=top"
+          alt="Corporate event setup by Lumière"
+          loading="lazy"
+        />
+        <div class="about-badge">
+          <span class="badge-num">14+</span>
+          <span class="badge-label">Years of Excellence</span>
+        </div>
+      </div>
+
+      <!-- Right: copy -->
+      <div class="about-copy">
+        <p class="section-eyebrow">Our Story</p>
+        <h2 class="section-title">Crafting Memories<br/><em>Since 2020</em></h2>
+        <p class="about-text">
+          Lumière Events was founded on a simple belief: every celebration
+          deserves to be extraordinary. What began as a boutique wedding
+          planning studio has grown into one of the region's most sought-after
+          full-service event companies.
+        </p>
+        <p class="about-text">
+          Our team of 30+ creative professionals brings decades of combined
+          experience, an obsessive eye for detail, and an unwavering commitment
+          to exceeding expectations — every single time.
+        </p>
+
+        <div class="about-stats">
+          <div class="stat">
+            <span class="stat-num">850+</span>
+            <span class="stat-label">Events Delivered</span>
+          </div>
+          <div class="stat">
+            <span class="stat-num">98%</span>
+            <span class="stat-label">Client Satisfaction</span>
+          </div>
+          <div class="stat">
+            <span class="stat-num">12</span>
+            <span class="stat-label">Industry Awards</span>
+          </div>
+        </div>
+
+        <a href="#contact" class="btn btn-primary">Work With Us</a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========== GALLERY ========== -->
+  <section class="gallery" id="gallery">
+    <div class="section-container">
+      <div class="section-header">
+        <p class="section-eyebrow">Portfolio</p>
+        <h2 class="section-title">A Glimpse of Our Work</h2>
+        <p class="section-desc">
+          Every frame tells a story. Browse a selection of moments we've helped
+          create for our clients.
+        </p>
+      </div>
+
+      <!-- Slider -->
+      <div class="slider-wrapper">
+        <div class="slider-track" id="sliderTrack">
+
+          <div class="slide">
+            <!-- Wedding: elegant ceremony aisle -->
+            <img
+              class="slide-img"
+              src="https://images.unsplash.com/photo-1519741497674-611481863552?w=1400&q=80&fit=crop"
+              alt="Elegant wedding ceremony aisle decorated with white flowers"
+              loading="eager"
+            />
+            <div class="slide-caption">
+              <span class="slide-tag">Wedding</span>
+              <p>The Blackwood Estate · Summer 2024</p>
+            </div>
+          </div>
+
+          <div class="slide">
+            <!-- Corporate: conference / gala -->
+            <img
+              class="slide-img"
+              src="https://images.unsplash.com/photo-1587825140708-dfaf72ae4b04?w=1400&q=80&fit=crop"
+              alt="Corporate gala event with elegant lighting and round tables"
+              loading="lazy"
+            />
+            <div class="slide-caption">
+              <span class="slide-tag">Corporate</span>
+              <p>Meridian Tech Summit · Spring 2024</p>
+            </div>
+          </div>
+
+          <div class="slide">
+            <!-- Birthday: celebration cake & decor -->
+            <img
+              class="slide-img"
+              src="https://images.unsplash.com/photo-1464349095431-e9a21285b5f3?w=1400&q=80&fit=crop"
+              alt="Luxurious birthday celebration with cake and golden decorations"
+              loading="lazy"
+            />
+            <div class="slide-caption">
+              <span class="slide-tag">Birthday</span>
+              <p>A 50th Milestone · Winter 2023</p>
+            </div>
+          </div>
+
+          <div class="slide">
+            <!-- Private Party: cocktail / champagne soirée -->
+            <img
+              class="slide-img"
+              src="https://images.unsplash.com/photo-1530103862676-de8c9debad1d?w=1400&q=80&fit=crop"
+              alt="Glamorous private party with champagne and ambient lighting"
+              loading="lazy"
+            />
+            <div class="slide-caption">
+              <span class="slide-tag">Private Party</span>
+              <p>Rooftop Soirée · Autumn 2023</p>
+            </div>
+          </div>
+
+          <div class="slide">
+            <!-- Wedding: outdoor garden ceremony -->
+            <img
+              class="slide-img"
+              src="https://images.unsplash.com/photo-1606800052052-a08af7148866?w=1400&q=80&fit=crop"
+              alt="Romantic outdoor garden wedding ceremony at sunset"
+              loading="lazy"
+            />
+            <div class="slide-caption">
+              <span class="slide-tag">Wedding</span>
+              <p>Garden Ceremony · Summer 2023</p>
+            </div>
+          </div>
+
+        </div><!-- /.slider-track -->
+
+        <!-- Controls -->
+        <button class="slider-btn slider-prev" id="sliderPrev" aria-label="Previous slide">&#8592;</button>
+        <button class="slider-btn slider-next" id="sliderNext" aria-label="Next slide">&#8594;</button>
+
+        <!-- Dots -->
+        <div class="slider-dots" id="sliderDots"></div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========== CONTACT ========== -->
+  <section class="contact" id="contact">
+    <div class="section-container contact-inner">
+
+      <!-- Left: info -->
+      <div class="contact-info">
+        <p class="section-eyebrow">Get In Touch</p>
+        <h2 class="section-title">Let's Plan<br/><em>Your Event</em></h2>
+        <p class="contact-desc">
+          Ready to start your journey? Fill out the form and one of our event
+          specialists will be in touch within 24 hours.
+        </p>
+
+        <ul class="contact-details">
+          <li>
+            <span class="detail-icon">📍</span>
+            <span>Fiapre, Sunyani, Ghana</span>
+          </li>
+          <li>
+            <span class="detail-icon">📞</span>
+            <span>+233  20 315 8852</span>
+          </li>
+          <li>
+            <span class="detail-icon">✉️</span>
+            <span><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="fc9499909093bc90899195998e99998a9992888fd29f9391">[obedaddo391@gmail.com]</a></span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Right: form -->
+      <div class="contact-form-wrap">
+        <form class="contact-form" id="contactForm" novalidate>
+
+          <div class="form-group">
+            <label for="name">Full Name</label>
+            <input type="text"  id="name"    name="name"    placeholder="Your name"         autocomplete="name" />
+            <span class="form-error" id="nameError"></span>
+          </div>
+
+          <div class="form-group">
+            <label for="email">Email Address</label>
+            <input type="email" id="email"   name="email"   placeholder="your@email.com"    autocomplete="email" />
+            <span class="form-error" id="emailError"></span>
+          </div>
+
+          <div class="form-group">
+            <label for="event">Event Type</label>
+            <select id="event" name="event">
+              <option value="">Select an event type</option>
+              <option value="wedding">Wedding</option>
+              <option value="corporate">Corporate Event</option>
+              <option value="birthday">Birthday</option>
+              <option value="party">Private Party</option>
+              <option value="other">Other</option>
+            </select>
+            <span class="form-error" id="eventError"></span>
+          </div>
+
+          <div class="form-group">
+            <label for="message">Your Message</label>
+            <textarea id="message" name="message" rows="5" placeholder="Tell us about your vision…"></textarea>
+            <span class="form-error" id="messageError"></span>
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-full" id="submitBtn">
+            Send Enquiry
+          </button>
+
+          <!-- Success banner (hidden by default) -->
+          <div class="form-success" id="formSuccess">
+            ✦ Thank you! We'll be in touch within 24 hours.
+          </div>
+
+        </form>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="footer">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="#home" class="nav-logo footer-logo">
+          <span class="logo-icon">✦</span>
+          <span class="logo-text">Lumière</span>
+        </a>
+        <p class="footer-tagline">Moments Made Eternal.</p>
+      </div>
+
+      <div class="footer-links-group">
+        <h4>Navigate</h4>
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#gallery">Gallery</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-links-group">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="#services">Weddings</a></li>
+          <li><a href="#services">Corporate Events</a></li>
+          <li><a href="#services">Birthdays</a></li>
+          <li><a href="#services">Private Parties</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-social-wrap">
+        <h4>Follow Us</h4>
+        <div class="social-icons">
+          <a href="#" class="social-icon" aria-label="Instagram">
+            <!-- Simple SVG Instagram icon -->
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+              <circle cx="12" cy="12" r="4"/>
+              <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/>
+            </svg>
+          </a>
+          <a href="#" class="social-icon" aria-label="Facebook">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+            </svg>
+          </a>
+          <a href="#" class="social-icon" aria-label="Pinterest">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M12 2C6.48 2 2 6.48 2 12c0 4.24 2.65 7.86 6.39 9.29-.09-.78-.17-1.98.04-2.83.18-.77 1.22-5.15 1.22-5.15s-.31-.63-.31-1.56c0-1.46.85-2.55 1.9-2.55.9 0 1.33.67 1.33 1.48 0 .9-.58 2.26-.87 3.51-.25 1.05.52 1.9 1.54 1.9 1.85 0 3.09-2.37 3.09-5.18 0-2.14-1.44-3.64-3.5-3.64-2.39 0-3.79 1.79-3.79 3.64 0 .72.28 1.49.63 1.91.07.08.08.15.06.23l-.23.96c-.04.15-.12.18-.27.11-1-.47-1.62-1.93-1.62-3.1 0-2.52 1.83-4.84 5.28-4.84 2.77 0 4.93 1.97 4.93 4.61 0 2.75-1.73 4.96-4.13 4.96-.81 0-1.57-.42-1.83-.91l-.5 1.85c-.18.69-.67 1.56-1 2.08.75.23 1.55.36 2.37.36 5.52 0 10-4.48 10-10S17.52 2 12 2z"/>
+            </svg>
+          </a>
+          <a href="#" class="social-icon" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+              <rect x="2" y="9" width="4" height="12"/>
+              <circle cx="4" cy="4" r="2"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; 2025 Lumière Events. All rights reserved.</p

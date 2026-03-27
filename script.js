@@ -337,35 +337,75 @@ document.addEventListener('keydown', e => {
     });
   });
 
-  /* Form submit */
-  form.addEventListener('submit', function (e) {
-    e.preventDefault();
+  /* Form submit — validates locally, then POSTs to Formspree via fetch */
+  form.addEventListener('submit', async function (e) {
+    e.preventDefault(); // always prevent default; we submit via fetch
 
-    // Validate all fields
+    // 1. Run all validators first
     const valid = Object.keys(fields).map(validateField).every(Boolean);
 
     if (!valid) {
-      // Focus the first errored field
-      const firstError = form.querySelector('.form-group.error input, .form-group.error select, .form-group.error textarea');
+      // Focus the first field with an error
+      const firstError = form.querySelector(
+        '.form-group.error input, .form-group.error select, .form-group.error textarea'
+      );
       if (firstError) firstError.focus();
       return;
     }
 
-    /* Simulate async submission */
+    // 2. Show loading state
     submitBtn.textContent = 'Sending…';
     submitBtn.disabled = true;
+    successEl.classList.remove('visible');
 
-    setTimeout(() => {
-      // Show success
-      form.reset();
-      successEl.classList.add('visible');
+    // 3. Build form data and POST to Formspree
+    try {
+      const formData = new FormData(form);
+      const response = await fetch(form.action, {
+        method: 'POST',
+        body: formData,
+        headers: { 'Accept': 'application/json' }
+      });
+
+      if (response.ok) {
+        // Success — reset form and show banner
+        form.reset();
+        // Clear all error states
+        Object.keys(fields).forEach(key => setError(key, ''));
+        successEl.classList.add('visible');
+        setTimeout(() => successEl.classList.remove('visible'), 7000);
+      } else {
+        // Formspree returned an error (e.g. 422 unprocessable, 429 rate limit)
+        const data = await response.json().catch(() => ({}));
+        const msg = (data.errors && data.errors.map(e => e.message).join(', '))
+          || 'Something went wrong. Please try again or email us directly.';
+        showFormError(msg);
+      }
+    } catch (err) {
+      // Network failure
+      showFormError('Network error — please check your connection and try again.');
+    } finally {
       submitBtn.textContent = 'Send Enquiry';
       submitBtn.disabled = false;
-
-      // Hide success after 6 s
-      setTimeout(() => successEl.classList.remove('visible'), 6000);
-    }, 1400);
+    }
   });
+
+  /* Show a general form-level error message */
+  function showFormError(msg) {
+    successEl.textContent = '⚠ ' + msg;
+    successEl.style.background = 'rgba(192,57,43,0.12)';
+    successEl.style.borderColor = '#c0392b';
+    successEl.style.color = '#e74c3c';
+    successEl.classList.add('visible');
+    setTimeout(() => {
+      successEl.classList.remove('visible');
+      // Reset back to success styling for next attempt
+      successEl.textContent = '✦ Thank you! We\'ll be in touch within 24 hours.';
+      successEl.style.background = '';
+      successEl.style.borderColor = '';
+      successEl.style.color = '';
+    }, 7000);
+  }
 })();
 
 /* ── Stats counter animation ─────────────────────────────── */

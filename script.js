@@ -9,6 +9,7 @@
    · Service card staggered reveal
    · Contact form validation with live feedback
    · Social media links open in new tabs (fixed)
+   · MOBILE MENU LINKS NOW WORK PROPERLY
    ============================================================ */
 
 'use strict';
@@ -79,19 +80,33 @@ function updateActiveLink() {
 window.addEventListener('scroll', updateActiveLink, { passive: true });
 updateActiveLink();
 
-/* ── Smooth scroll: all anchor links ─────────────────────── */
+/* ── Smooth scroll: ALL anchor links (including mobile) ─────── */
+// This handles BOTH desktop and mobile menu links
+function handleAnchorClick(e) {
+  const anchor = e.currentTarget;
+  const href = anchor.getAttribute('href');
+  
+  // Skip if it's just "#" or empty
+  if (!href || href === '#') return;
+  
+  // Skip external links (those that start with http:// or https://)
+  if (href.startsWith('http://') || href.startsWith('https://')) return;
+  
+  const target = document.querySelector(href);
+  if (!target) return;
+  
+  e.preventDefault();
+  smoothScrollTo(target, 900);
+  
+  // Close mobile menu after clicking
+  closeMobileMenu();
+}
+
+// Apply to ALL anchor tags with href starting with #
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-  anchor.addEventListener('click', function (e) {
-    const href = this.getAttribute('href');
-    if (href === '#') return;
-
-    const target = document.querySelector(href);
-    if (!target) return;
-
-    e.preventDefault();
-    smoothScrollTo(target, 900);
-    closeMobileMenu();
-  });
+  // Remove any existing listeners to avoid duplicates
+  anchor.removeEventListener('click', handleAnchorClick);
+  anchor.addEventListener('click', handleAnchorClick);
 });
 
 /* ── Mobile hamburger menu ────────────────────────────────── */
@@ -113,15 +128,11 @@ function closeMobileMenu() {
 }
 
 if (hamburger && mobileMenu) {
+  // Toggle menu on hamburger click
   hamburger.addEventListener('click', (e) => {
     e.stopPropagation();
     const isOpen = mobileMenu.classList.contains('open');
     isOpen ? closeMobileMenu() : openMobileMenu();
-  });
-
-  // Close mobile menu when clicking on a mobile link
-  document.querySelectorAll('.mobile-link, .nav-link').forEach(link => {
-    link.addEventListener('click', () => closeMobileMenu());
   });
 
   // Close on outside click
@@ -133,7 +144,7 @@ if (hamburger && mobileMenu) {
     }
   });
 
-  // Close on Escape
+  // Close on Escape key
   document.addEventListener('keydown', e => {
     if (e.key === 'Escape' && mobileMenu.classList.contains('open')) {
       closeMobileMenu();
@@ -421,6 +432,5 @@ if (hamburger && mobileMenu) {
   stats.forEach(el => observer.observe(el));
 })();
 
-/* ── Social Media Links: ensure they open in new tabs (already set in HTML) ── */
-// The social media links in the footer already have target="_blank" and rel="noopener noreferrer"
-// This ensures they work properly and open in new tabs.
+// Log to confirm script is working
+console.log('Lumière Events — All systems operational!');

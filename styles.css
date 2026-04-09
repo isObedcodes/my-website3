@@ -36,7 +36,7 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 html {
-  scroll-behavior: smooth;         /* fallback; JS handles easing */
+  scroll-behavior: smooth;
   font-size: 16px;
 }
 
@@ -164,7 +164,6 @@ select, input, textarea { font-family: inherit; }
   transition: background var(--trans), box-shadow var(--trans);
 }
 
-/* Scrolled state — added by JS */
 .navbar.scrolled {
   background: rgba(13, 12, 10, 0.96);
   backdrop-filter: blur(12px);
@@ -248,6 +247,8 @@ select, input, textarea { font-family: inherit; }
   flex-direction: column;
   gap: 5px;
   padding: 4px;
+  background: transparent;
+  z-index: 1001;
 }
 
 .bar {
@@ -259,7 +260,6 @@ select, input, textarea { font-family: inherit; }
   transform-origin: center;
 }
 
-/* Hamburger → X */
 .hamburger.open .bar:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
 .hamburger.open .bar:nth-child(2) { opacity: 0; }
 .hamburger.open .bar:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
@@ -270,13 +270,13 @@ select, input, textarea { font-family: inherit; }
   top: var(--nav-h);
   left: 0;
   right: 0;
-  background: rgba(13,12,10,0.97);
-  backdrop-filter: blur(16px);
-  padding: 0;
+  background: rgba(13,12,10,0.98);
+  backdrop-filter: blur(20px);
   max-height: 0;
   overflow: hidden;
-  transition: max-height 0.45s var(--ease), padding 0.3s;
+  transition: max-height 0.5s var(--ease), padding 0.3s;
   border-bottom: 1px solid var(--clr-border);
+  z-index: 999;
 }
 
 .mobile-menu.open {
@@ -311,34 +311,24 @@ select, input, textarea { font-family: inherit; }
   overflow: hidden;
 }
 
-/* Multi-layer rich background */
 .hero-bg {
   position: absolute;
   inset: 0;
   background:
     radial-gradient(ellipse 80% 60% at 20% 50%, rgba(201,168,76,0.07) 0%, transparent 60%),
-    radial-gradient(ellipse 60% 80% at 80% 30%, rgba(201,168,76,0.05) 0%, transparent 60%),
-    radial-gradient(ellipse 100% 100% at 50% 100%, rgba(139,90,40,0.12) 0%, transparent 55%);
-  background-color: #0a0907;
-  /* Grain texture via repeating noise */
-  background-image:
-    radial-gradient(ellipse 80% 60% at 20% 50%, rgba(201,168,76,0.07) 0%, transparent 60%),
-    radial-gradient(ellipse 60% 80% at 80% 30%, rgba(201,168,76,0.05) 0%, transparent 60%),
-    url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    radial-gradient(ellipse 60% 80% at 80% 30%, rgba(201,168,76,0.05) 0%, transparent 60%);
   background-color: #0a0907;
 }
 
 .hero-overlay {
   position: absolute;
   inset: 0;
-  /* Diagonal grid lines for texture */
   background-image:
     linear-gradient(rgba(201,168,76,0.04) 1px, transparent 1px),
     linear-gradient(90deg, rgba(201,168,76,0.04) 1px, transparent 1px);
   background-size: 80px 80px;
 }
 
-/* Corner ornaments */
 .hero-ornament {
   position: absolute;
   font-size: 0.9rem;
@@ -370,17 +360,15 @@ select, input, textarea { font-family: inherit; }
   text-transform: uppercase;
   color: var(--clr-gold);
   margin-bottom: 1.5rem;
-  animation: heroFadeUp 1.2s 0.1s var(--ease) both;
 }
 
 .hero-title {
   font-family: var(--font-display);
   font-size: clamp(3.5rem, 10vw, 7.5rem);
   font-weight: 300;
-  line-height: 1.0;
+  line-height: 1;
   color: var(--clr-cream);
   margin-bottom: 1.75rem;
-  animation: heroFadeUp 1.2s 0.2s var(--ease) both;
 }
 
 .hero-title em {
@@ -395,7 +383,6 @@ select, input, textarea { font-family: inherit; }
   max-width: 50ch;
   margin: 0 auto 2.5rem;
   line-height: 1.8;
-  animation: heroFadeUp 1.2s 0.3s var(--ease) both;
 }
 
 .hero-cta-group {
@@ -403,10 +390,8 @@ select, input, textarea { font-family: inherit; }
   gap: 1rem;
   justify-content: center;
   flex-wrap: wrap;
-  animation: heroFadeUp 1.2s 0.4s var(--ease) both;
 }
 
-/* Scroll indicator */
 .scroll-indicator {
   position: absolute;
   bottom: 2.5rem;
@@ -417,7 +402,6 @@ select, input, textarea { font-family: inherit; }
   align-items: center;
   gap: 0.5rem;
   z-index: 2;
-  animation: heroFadeUp 1.2s 0.8s var(--ease) both;
 }
 
 .scroll-line {
@@ -430,7 +414,7 @@ select, input, textarea { font-family: inherit; }
 
 @keyframes scrollPulse {
   0%, 100% { opacity: 0.4; transform: scaleY(1); }
-  50%       { opacity: 1;   transform: scaleY(0.7); }
+  50%      { opacity: 1;   transform: scaleY(0.7); }
 }
 
 .scroll-text {
@@ -452,15 +436,11 @@ select, input, textarea { font-family: inherit; }
   gap: 2rem;
 }
 
-/* Service card */
 .service-card {
   background: var(--clr-bg);
   border: 1px solid var(--clr-border);
   border-radius: var(--radius-lg);
   overflow: hidden;
-  /* Always visible — no JS animation dependency */
-  opacity: 1;
-  transform: translateY(0);
   transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
 }
 
@@ -470,17 +450,15 @@ select, input, textarea { font-family: inherit; }
   border-color: var(--clr-gold-dk);
 }
 
-/* Card entrance animation (triggered by JS adding .card-animate) */
 @keyframes cardFadeUp {
   from { opacity: 0; transform: translateY(28px); }
   to   { opacity: 1; transform: translateY(0); }
 }
 
-.service-card.card-animate {
+.service-card {
   animation: cardFadeUp 0.6s ease both;
 }
 
-/* Service card images */
 .service-img-wrap {
   position: relative;
   height: 220px;
@@ -491,8 +469,6 @@ select, input, textarea { font-family: inherit; }
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center;
-  display: block;
   transition: transform 0.6s var(--ease);
 }
 
@@ -557,7 +533,6 @@ select, input, textarea { font-family: inherit; }
   align-items: center;
 }
 
-/* Visual collage */
 .about-visuals {
   position: relative;
   height: 520px;
@@ -568,7 +543,6 @@ select, input, textarea { font-family: inherit; }
   border-radius: var(--radius-lg);
   overflow: hidden;
   object-fit: cover;
-  object-position: center;
 }
 
 .about-img--main {
@@ -623,7 +597,6 @@ select, input, textarea { font-family: inherit; }
   margin-top: 2px;
 }
 
-/* About copy */
 .about-text {
   color: var(--clr-muted);
   font-size: 0.95rem;
@@ -683,7 +656,6 @@ select, input, textarea { font-family: inherit; }
   width: 100%;
   height: 520px;
   object-fit: cover;
-  object-position: center;
   display: block;
   transition: transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
@@ -723,7 +695,6 @@ select, input, textarea { font-family: inherit; }
   color: var(--clr-cream);
 }
 
-/* Slider buttons */
 .slider-btn {
   position: absolute;
   top: 50%;
@@ -739,8 +710,9 @@ select, input, textarea { font-family: inherit; }
   align-items: center;
   justify-content: center;
   backdrop-filter: blur(8px);
-  transition: background var(--trans), color var(--trans), border-color var(--trans);
+  transition: background var(--trans), color var(--trans);
   z-index: 10;
+  cursor: pointer;
 }
 
 .slider-btn:hover {
@@ -752,7 +724,6 @@ select, input, textarea { font-family: inherit; }
 .slider-prev { left: 1.25rem; }
 .slider-next { right: 1.25rem; }
 
-/* Dots */
 .slider-dots {
   position: absolute;
   bottom: 1.5rem;
@@ -814,7 +785,6 @@ select, input, textarea { font-family: inherit; }
 
 .detail-icon { font-size: 1rem; flex-shrink: 0; margin-top: 2px; }
 
-/* Form */
 .contact-form-wrap {
   background: var(--clr-surface);
   border: 1px solid var(--clr-border);
@@ -846,15 +816,8 @@ select, input, textarea { font-family: inherit; }
   padding: 0.8rem 1rem;
   color: var(--clr-cream);
   font-size: 0.9rem;
-  transition: border-color var(--trans), box-shadow var(--trans);
+  transition: border-color var(--trans);
   resize: vertical;
-  appearance: none;
-  -webkit-appearance: none;
-}
-
-.form-group input::placeholder,
-.form-group textarea::placeholder {
-  color: var(--clr-muted);
 }
 
 .form-group input:focus,
@@ -865,22 +828,18 @@ select, input, textarea { font-family: inherit; }
   box-shadow: 0 0 0 3px rgba(201,168,76,0.12);
 }
 
-/* Error state */
 .form-group.error input,
 .form-group.error select,
 .form-group.error textarea {
   border-color: #c0392b;
-  box-shadow: 0 0 0 3px rgba(192,57,43,0.12);
 }
 
 .form-error {
   font-size: 0.75rem;
   color: #e74c3c;
   min-height: 1em;
-  transition: opacity 0.2s;
 }
 
-/* Success banner */
 .form-success {
   display: none;
   text-align: center;
@@ -891,7 +850,6 @@ select, input, textarea { font-family: inherit; }
   border-radius: var(--radius);
   color: var(--clr-gold-lt);
   font-size: 0.88rem;
-  letter-spacing: 0.06em;
 }
 
 .form-success.visible { display: block; }
@@ -1006,37 +964,18 @@ select, input, textarea { font-family: inherit; }
   .about-inner   { grid-template-columns: 1fr; gap: 3rem; }
   .about-visuals { height: 340px; }
   .about-badge   { right: 0.5rem; }
-
   .contact-inner { grid-template-columns: 1fr; gap: 3rem; }
-
-  .footer-top {
-    grid-template-columns: 1fr 1fr;
-    gap: 2.5rem;
-  }
+  .footer-top    { grid-template-columns: 1fr 1fr; gap: 2.5rem; }
 }
 
 @media (max-width: 720px) {
   .nav-links  { display: none; }
   .hamburger  { display: flex; }
-
   .services-grid { grid-template-columns: 1fr; }
-
   .slide-img { height: 300px; }
-
-  .footer-top {
-    grid-template-columns: 1fr;
-    gap: 2rem;
-  }
-
-  .footer-bottom {
-    flex-direction: column;
-    gap: 0.5rem;
-    text-align: center;
-  }
-
+  .footer-top { grid-template-columns: 1fr; gap: 2rem; }
+  .footer-bottom { flex-direction: column; gap: 0.5rem; text-align: center; }
   .hero-cta-group { flex-direction: column; align-items: center; }
-
-  .about-badge { right: 0; }
 }
 
 @media (max-width: 480px) {
@@ -1044,26 +983,14 @@ select, input, textarea { font-family: inherit; }
   .hero-ornament { display: none; }
   .about-visuals { height: 280px; }
   .contact-form-wrap { padding: 1.5rem; }
-
   .slider-btn { width: 36px; height: 36px; font-size: 1rem; }
   .slider-prev { left: 0.5rem; }
   .slider-next { right: 0.5rem; }
 }
 
-/* ── Select custom arrow ───────────────────────────────────── */
 .form-group select {
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%238a8070' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-position: right 1rem center;
   padding-right: 2.5rem;
-}
-
-/* ── Utility: visually-hidden (accessibility) ──────────────── */
-.sr-only {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
-  clip: rect(0,0,0,0);
-  white-space: nowrap;
 }
